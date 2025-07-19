@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  stt:
+    build:
+      context: ./stt
+      dockerfile: Dockerfile
+    volumes:
+      - ./stt:/app
+    command: python main.py
+
+  tts:
+    build:
+      context: ./tts
+      dockerfile: Dockerfile
+    volumes:
+      - ./tts:/app
+    command: python main.py
+
+  cv-parser:
+    build:
+      context: ./cv-parser
+      dockerfile: Dockerfile
+    volumes:
+      - ./cv-parser:/app
+    command: python main.py
+
+  question-gen:
+    build:
+      context: ./question-gen
+      dockerfile: Dockerfile
+    volumes:
+      - ./question-gen:/app
+    command: python main.py
+
+networks:
+  default:
+    driver: bridge
